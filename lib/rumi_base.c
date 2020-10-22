@@ -28,7 +28,7 @@ rumi_reset (Rumi rumi)
 		rumi->save_to_disk = false;
 
 		rumi->show_debug = false;
-		rumi->show_warning = false;
+		rumi->show_warnings = false;
 		rumi->show_suggestions = false;
 
 		rumi->show_color = false;

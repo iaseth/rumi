@@ -29,7 +29,7 @@ struct Rumi_t {
 	char filename [RUMI_MAX_NAME_LENGTH];
 
 	bool show_debug;
-	bool show_warning;
+	bool show_warnings;
 	bool show_suggestions;
 
 	bool show_color;
