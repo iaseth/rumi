@@ -10,6 +10,8 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 {
 	static int yday = 0;
 	static char date_string[12] = "";
+
+	static int tv_sec = 0;
 	static char time_string[12] = "";
 
 	printf("[%s%s%s] %2d. ", c1, prefix, rumi_color_reset, ++rumi->log_count);
@@ -33,15 +35,18 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		}
 
 		if (rumi->show_time) {
+			if (tv_sec != ts.tv_sec) {
+				tv_sec = ts.tv_sec;
+				sprintf(time_string, "%02d:%02d:%02d", time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec);
+			}
+
 			int milliseconds = ts.tv_nsec / 1e6;
 			if (rumi->show_color) {
-				printf("at %s%02d:%02d:%02d%s|%03dms ", rumi_color_fg_cyan,
-					time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec,
-					rumi_color_reset, milliseconds);
+				printf("at %s%s%s|%03dms ", rumi_color_fg_cyan,
+					time_string, rumi_color_reset, milliseconds);
 			} else {
-				printf("at %02d:%02d:%02d|%03dms ",
-					time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec,
-					milliseconds);
+				printf("at %s|%03dms ",
+					time_string, milliseconds);
 			}
 		}
 	}
