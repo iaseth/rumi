@@ -31,6 +31,14 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 				printf("on %02d.%02d.%02d ", day, month, year);
 			}
 		}
+
+		if (rumi->show_time) {
+			if (rumi->show_color) {
+				printf("on %s%02d:%02d:%02d%s ", rumi_color_fg_cyan, time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec, rumi_color_reset);
+			} else {
+				printf("at %02d:%02d:%02d ", time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec);
+			}
+		}
 	}
 	printf("(%s%s%s) ", c2, rumi->title, rumi_color_reset);
 	printf("Rumi says: %s\n", message);
