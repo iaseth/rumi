@@ -7,6 +7,7 @@ Rumi
 rumi_new (char *title)
 {
 	Rumi rumi = malloc(sizeof(Rumi_t));
+	strcpy(rumi->title, title);
 	return rumi;
 }
 
