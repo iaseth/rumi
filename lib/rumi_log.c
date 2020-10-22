@@ -8,6 +8,7 @@
 int
 rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message)
 {
+	static struct tm *time_ptr = NULL;
 	static int yday = 0;
 	static char date_string[12] = "";
 
@@ -18,7 +19,10 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	if (rumi->show_date || rumi->show_time) {
 		struct timespec ts;
 		timespec_get(&ts, TIME_UTC);
-		struct tm *time_ptr = localtime(&(ts.tv_sec));
+		if (time_ptr == NULL || tv_sec != ts.tv_sec) {
+			time_ptr = localtime(&(ts.tv_sec));
+		}
+
 		if (rumi->show_date) {
 			if (yday != time_ptr->tm_yday) {
 				yday = time_ptr->tm_yday;
