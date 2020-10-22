@@ -10,6 +10,8 @@
 #define RUMI_NO_KEY 0
 
 
+typedef char RumiColor;
+
 struct Rumi_t;
 typedef struct Rumi_t Rumi_t;
 typedef struct Rumi_t *Rumi;
