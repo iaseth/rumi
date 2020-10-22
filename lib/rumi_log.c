@@ -19,11 +19,13 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	if (rumi->show_date || rumi->show_time) {
 		struct timespec ts;
 		timespec_get(&ts, TIME_UTC);
-		if (time_ptr == NULL || tv_sec != ts.tv_sec) {
+		// only call localtime() if tv_sec has changed.
+		if (tv_sec != ts.tv_sec) {
 			time_ptr = localtime(&(ts.tv_sec));
 		}
 
 		if (rumi->show_date) {
+			// only computer date_string if yday has changed
 			if (yday != time_ptr->tm_yday) {
 				yday = time_ptr->tm_yday;
 				int day = time_ptr->tm_mday;
@@ -39,6 +41,7 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		}
 
 		if (rumi->show_time) {
+			// only computer time_string if tv_sec has changed
 			if (tv_sec != ts.tv_sec) {
 				tv_sec = ts.tv_sec;
 				sprintf(time_string, "%02d:%02d:%02d", time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec);
