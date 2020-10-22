@@ -5,7 +5,7 @@
 
 int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message);
 
-void rumi_log (Rumi rumi, char *message);
+void rumi_ok (Rumi rumi, char *message);
 
 
 

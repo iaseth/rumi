@@ -9,7 +9,7 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 }
 
 void
-rumi_log (Rumi rumi, char *message)
+rumi_ok (Rumi rumi, char *message)
 {
 	printf("Rumi says: %s\n", message);
 }

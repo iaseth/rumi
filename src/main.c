@@ -6,7 +6,7 @@ void
 rumi_no_macros ()
 {
 	Rumi rumi = rumi_new("rumi_no_macros");
-	rumi_log(rumi, "Hello");
+	rumi_ok(rumi, "Hello");
 	rumi = rumi_delete(rumi);
 }
 
