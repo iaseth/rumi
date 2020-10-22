@@ -31,10 +31,10 @@ rumi_reset (Rumi rumi)
 		rumi->show_warnings = false;
 		rumi->show_suggestions = false;
 
-		rumi->show_color = false;
-		rumi->show_date = false;
-		rumi->show_time = false;
-		rumi->show_instant = false;
+		rumi->show_color = true;
+		rumi->show_date = true;
+		rumi->show_time = true;
+		rumi->show_instant = true;
 
 		rumi->log_count = 0;
 	}
