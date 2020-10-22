@@ -11,8 +11,15 @@
 	bool rumi_ ## x ## _is_off (Rumi rumi); \
 	bool rumi_ ## x ## _is_on  (Rumi rumi);
 
+#define RUMI_DECLARE_INDICATORS_PLURAL(x) \
+	bool rumi_ ## x ## _are_off (Rumi rumi); \
+	bool rumi_ ## x ## _are_on  (Rumi rumi);
+
 RUMI_DECLARE_SWITCHES(debug);
 RUMI_DECLARE_INDICATORS(debug);
+
+RUMI_DECLARE_SWITCHES(warnings);
+RUMI_DECLARE_INDICATORS_PLURAL(warnings);
 
 
 
