@@ -5,5 +5,6 @@
 int
 main (int argc, char const *argv[])
 {
-	printf("Hello, Rumi!\n");
+	Rumi rumi = rumi_new("Rumi 1.0");
+	rumi = rumi_delete(rumi);
 }
