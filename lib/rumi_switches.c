@@ -10,6 +10,10 @@
 	bool rumi_ ## x ## _is_off (Rumi rumi) { if (rumi == NULL) return false; return !rumi->show_ ## x; } \
 	bool rumi_ ## x ## _is_on  (Rumi rumi) { if (rumi == NULL) return false; return  rumi->show_ ## x; }
 
+#define RUMI_DEFINE_INDICATORS_PLURAL(x) \
+	bool rumi_ ## x ## _are_off (Rumi rumi) { if (rumi == NULL) return false; return !rumi->show_ ## x; } \
+	bool rumi_ ## x ## _are_on  (Rumi rumi) { if (rumi == NULL) return false; return  rumi->show_ ## x; }
+
 #define RUMI_DEFINE_SWITCHES_AND_INDICATORS(x) \
 	RUMI_DEFINE_SWITCHES(x) \
 	RUMI_DEFINE_INDICATORS(x)
