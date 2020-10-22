@@ -9,9 +9,7 @@ int
 rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message)
 {
 	static int yday = 0;
-	static int day = 0;
-	static int month = 0;
-	static int year = 0;
+	static char date_string[12] = "";
 
 	printf("[%s%s%s] %2d. ", c1, prefix, rumi_color_reset, ++rumi->log_count);
 	if (rumi->show_date || rumi->show_time) {
@@ -21,14 +19,15 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		if (rumi->show_date) {
 			if (yday != time_ptr->tm_yday) {
 				yday = time_ptr->tm_yday;
-				day = time_ptr->tm_mday;
-				month = time_ptr->tm_mon + 1;
-				year = time_ptr->tm_year % 100;
+				int day = time_ptr->tm_mday;
+				int month = time_ptr->tm_mon + 1;
+				int year = time_ptr->tm_year % 100;
+				sprintf(date_string, "%02d.%02d.%02d", day, month, year);
 			}
 			if (rumi->show_color) {
-				printf("on %s%02d.%02d.%02d%s ", rumi_color_fg_yellow, day, month, year, rumi_color_reset);
+				printf("on %s%s%s ", rumi_color_fg_yellow, date_string, rumi_color_reset);
 			} else {
-				printf("on %02d.%02d.%02d ", day, month, year);
+				printf("on %s ", date_string);
 			}
 		}
 
