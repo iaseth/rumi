@@ -6,7 +6,7 @@ void
 rumi_no_macros ()
 {
 	Rumi rumi = rumi_new("rumi_no_macros");
-	printf("%s\n", rumi->title);
+	rumi_log(rumi, "Hello");
 	rumi = rumi_delete(rumi);
 }
 
@@ -20,5 +20,5 @@ void rumi_with_macros ()
 int
 main (int argc, char const *argv[])
 {
-	rumi_with_macros();
+	rumi_no_macros();
 }

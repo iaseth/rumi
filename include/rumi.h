@@ -5,6 +5,7 @@
 #include "rumi_types.h"
 #include "rumi_base.h"
 #include "rumi_switches.h"
+#include "rumi_log.h"
 
 
 
