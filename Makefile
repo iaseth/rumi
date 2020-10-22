@@ -15,6 +15,7 @@ RUMI_NAMES += rumi_macros
 RUMI_NAMES += rumi_types
 RUMI_NAMES += rumi_base
 RUMI_NAMES += rumi_switches
+RUMI_NAMES += rumi_log
 
 RUMI_OBJ_NAMES = ${addsuffix .o, ${RUMI_NAMES}}
 RUMI_OBJS = ${addprefix build/, ${RUMI_OBJ_NAMES}}
