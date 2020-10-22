@@ -10,12 +10,13 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 {
 	static int yday = 0;
 	static char date_string[12] = "";
+	static char time_string[12] = "";
 
 	printf("[%s%s%s] %2d. ", c1, prefix, rumi_color_reset, ++rumi->log_count);
 	if (rumi->show_date || rumi->show_time) {
-		time_t time_raw;
-		time(&time_raw);
-		struct tm *time_ptr = localtime(&time_raw);
+		struct timespec ts;
+		timespec_get(&ts, TIME_UTC);
+		struct tm *time_ptr = localtime(&(ts.tv_sec));
 		if (rumi->show_date) {
 			if (yday != time_ptr->tm_yday) {
 				yday = time_ptr->tm_yday;
@@ -32,10 +33,15 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		}
 
 		if (rumi->show_time) {
+			int milliseconds = ts.tv_nsec / 1e6;
 			if (rumi->show_color) {
-				printf("at %s%02d:%02d:%02d%s ", rumi_color_fg_cyan, time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec, rumi_color_reset);
+				printf("at %s%02d:%02d:%02d%s|%03dms ", rumi_color_fg_cyan,
+					time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec,
+					rumi_color_reset, milliseconds);
 			} else {
-				printf("at %02d:%02d:%02d ", time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec);
+				printf("at %02d:%02d:%02d|%03dms ",
+					time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec,
+					milliseconds);
 			}
 		}
 	}
@@ -47,7 +53,7 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 void
 rumi_ok (Rumi rumi, char *message)
 {
-	rumi_log_internal(rumi, rumi_color_fg_green, rumi_color_fg_yellow, rumi_color_fg_green, "   OK   ", message);
+	rumi_log_internal(rumi, rumi_color_fg_green, rumi_color_fg_green, rumi_color_fg_yellow, "   OK   ", message);
 }
 
 
