@@ -7,6 +7,8 @@
 #define RUMI_MAX_NAME_LENGTH 100
 #define RUMI_MIN_CHILDREN 16
 
+#define RUMI_NO_KEY 0
+
 
 struct Rumi_t;
 typedef struct Rumi_t Rumi_t;
