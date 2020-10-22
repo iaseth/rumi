@@ -3,11 +3,35 @@
 #include "rumi_colors.h"
 
 #include <stdio.h>
+#include <time.h>
 
 int
 rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message)
 {
+	static int yday = 0;
+	static int day = 0;
+	static int month = 0;
+	static int year = 0;
+
 	printf("[%s%s%s] %2d. ", c1, prefix, rumi_color_reset, ++rumi->log_count);
+	if (rumi->show_date || rumi->show_time) {
+		time_t time_raw;
+		time(&time_raw);
+		struct tm *time_ptr = gmtime(&time_raw);
+		if (rumi->show_date) {
+			if (yday != time_ptr->tm_yday) {
+				yday = time_ptr->tm_yday;
+				day = time_ptr->tm_mday;
+				month = time_ptr->tm_mon + 1;
+				year = time_ptr->tm_year % 100;
+			}
+			if (rumi->show_color) {
+				printf("on %s%02d.%02d.%02d%s ", rumi_color_fg_yellow, day, month, year, rumi_color_reset);
+			} else {
+				printf("on %02d.%02d.%02d ", day, month, year);
+			}
+		}
+	}
 	printf("(%s%s%s) ", c2, rumi->title, rumi_color_reset);
 	printf("Rumi says: %s\n", message);
 	return 0;
