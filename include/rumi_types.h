@@ -12,14 +12,14 @@
 
 typedef char *RumiColor;
 
-struct Rumi_t;
-typedef struct Rumi_t Rumi_t;
-typedef struct Rumi_t *Rumi;
+struct RumiStruct;
+typedef struct RumiStruct RumiStruct;
+typedef struct RumiStruct *Rumi;
 
 
-struct Rumi_t {
-	struct Rumi_t *parent;
-	struct Rumi_t **children;
+struct RumiStruct {
+	struct RumiStruct *parent;
+	struct RumiStruct **children;
 
 	bool is_locked;
 	int key;
