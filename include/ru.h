@@ -10,6 +10,8 @@ typedef const struct RumiRuStruct* (*RumySwitchFunction) (Rumi rumi);
 typedef bool (*RumyIndicatorFunction) (Rumi rumi);
 
 struct RumiRuStruct {
+	int status_code;
+
 	Rumi (*new) (char *title);
 	Rumi (*new_child) (Rumi rumi);
 	Rumi (*delete) (Rumi rumi);

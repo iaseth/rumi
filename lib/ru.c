@@ -4,6 +4,7 @@
 #include "rumi_log.h"
 
 struct RumiRuStruct ru_struct = {
+	.status_code = 0,
 	.new = &rumi_new,
 	.new_child = &rumi_new_child,
 	.delete = &rumi_delete,
