@@ -6,8 +6,8 @@
 struct RumiRuStruct;
 
 typedef const struct RumiRuStruct* (*RumyLoggerFunction) (Rumi rumi, char *message, ...);
-typedef const struct RumiRuStruct* (*RumySwitchFunction) ();
-typedef const struct RumiRuStruct* (*RumyIndicatorFunction) ();
+typedef const struct RumiRuStruct* (*RumySwitchFunction) (Rumi rumi);
+typedef bool (*RumyIndicatorFunction) (Rumi rumi);
 
 struct RumiRuStruct {
 	RumyLoggerFunction ok;

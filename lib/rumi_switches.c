@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 #define RUMI_DEFINE_SWITCHES(x) \
-	void rumi_turn_off_ ## x (Rumi rumi) { if (rumi == NULL || rumi->parent != NULL) return; rumi->show_ ## x = false; } \
-	void rumi_turn_on_  ## x (Rumi rumi) { if (rumi == NULL || rumi->parent != NULL) return; rumi->show_ ## x =  true; }
+	const struct RumiRuStruct*  rumi_turn_off_ ## x (Rumi rumi) { if (rumi == NULL || rumi->parent != NULL) return ru; rumi->show_ ## x = false; return ru; } \
+	const struct RumiRuStruct*  rumi_turn_on_  ## x (Rumi rumi) { if (rumi == NULL || rumi->parent != NULL) return ru; rumi->show_ ## x =  true; return ru; }
 
 #define RUMI_DEFINE_INDICATORS(x) \
 	bool rumi_ ## x ## _is_off (Rumi rumi) { if (rumi == NULL) return false; return !rumi->show_ ## x; } \

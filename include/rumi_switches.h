@@ -2,10 +2,11 @@
 #define RUMI_SWITCHES_H
 
 #include "rumi_types.h"
+#include "rumi_ru.h"
 
 #define RUMI_DECLARE_SWITCHES(x) \
-	void rumi_turn_off_ ## x (Rumi rumi); \
-	void rumi_turn_on_  ## x (Rumi rumi);
+	const struct RumiRuStruct*  rumi_turn_off_ ## x (Rumi rumi); \
+	const struct RumiRuStruct*  rumi_turn_on_  ## x (Rumi rumi);
 
 #define RUMI_DECLARE_INDICATORS(x) \
 	bool rumi_ ## x ## _is_off (Rumi rumi); \
