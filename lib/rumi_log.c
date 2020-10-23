@@ -30,8 +30,8 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 				yday = time_ptr->tm_yday;
 				int day = time_ptr->tm_mday;
 				int month = time_ptr->tm_mon + 1;
-				int year = time_ptr->tm_year % 100;
-				sprintf(date_string, "%02d.%02d.%02d", day, month, year);
+				int year = 1900 + time_ptr->tm_year;
+				sprintf(date_string, "%02d.%02d.%04d", day, month, year);
 			}
 			if (rumi->show_color) {
 				printf("on %s%s%s ", rumi_color_fg_yellow, date_string, rumi_color_reset);
@@ -49,10 +49,10 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 
 			int milliseconds = ts.tv_nsec / 1e6;
 			if (rumi->show_color) {
-				printf("at %s%s%s|%03dms ", rumi_color_fg_cyan,
+				printf("at %s%s%s %03dms ", rumi_color_fg_cyan,
 					time_string, rumi_color_reset, milliseconds);
 			} else {
-				printf("at %s|%03dms ",
+				printf("at %s %03dms ",
 					time_string, milliseconds);
 			}
 		}
