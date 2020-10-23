@@ -92,51 +92,52 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		rumi_color_fg_ ## c2,                        \
 		rumi_color_fg_ ## c3,                        \
 		prefix, message);                            \
-	va_end(argptr);
+	va_end(argptr);                                  \
+	return ru;
 
-void
+const struct RumiRuStruct *
 rumi_ok (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(green, green, green, "   OK   ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_error (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(red, red, red, " ERROR! ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_suggest (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(yellow, cyan, yellow, "  SUGG  ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_tip (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(magenta, cyan, yellow, "  TIP!  ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_warn (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(cyan, red, yellow, "  WARN  ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_good (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(green, magenta, yellow, "  GOOD  ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_bad (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(red, magenta, yellow, "   BAD  ");
 }
 
-void
+const struct RumiRuStruct *
 rumi_nate (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(yellow, magenta, yellow, "  NATE  ");

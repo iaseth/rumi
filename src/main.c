@@ -8,7 +8,7 @@ rumi_no_macros ()
 	Rumi rumi = rumi_new("rumi_no_macros");
 	for (int i = 0; i < 20; ++i) {
 		if (i % 2 == 0) {
-			rumi_ok(rumi, "This is an even number");
+			ru->ok(rumi, "This is an even number")->ok(rumi, "More ok");
 		} else {
 			rumi_error(rumi, "This is odd");
 		}
