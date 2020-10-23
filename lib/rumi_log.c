@@ -7,7 +7,7 @@
 #include <time.h>
 
 int
-rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, char *postscript, ...)
+rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, ...)
 {
 	static struct tm *time_ptr = NULL;
 	static int yday = 0;
@@ -72,24 +72,12 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	}
 
 	if (rumi->show_color) {
-		if (postscript == NULL) {
-			printf("(%s%s%s) %s.\n",
-				c2, rumi->title, rumi_color_reset,
-				message
-			);
-		} else {
-			printf("(%s%s%s) %s: [%s%s%s]\n",
-				c2, rumi->title, rumi_color_reset,
-				message,
-				c3, postscript, rumi_color_reset
-			);
-		}
+		printf("(%s%s%s) %s.\n",
+			c2, rumi->title, rumi_color_reset,
+			message
+		);
 	} else {
-		if (postscript == NULL) {
-			printf("(%s) %s.\n", rumi->title, message);
-		} else {
-			printf("(%s) %s [%s]\n", rumi->title, message, postscript);
-		}
+		printf("(%s) %s.\n", rumi->title, message);
 	}
 	return 0;
 }
@@ -98,16 +86,16 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 
 #define RUMI_LOG_INTERNAL_CALLER(c1, c2, c3, prefix) \
 	va_list argptr;                                  \
-	va_start(argptr, postscript);                    \
+	va_start(argptr, message);                       \
 	rumi_log_internal(rumi,                          \
 		rumi_color_fg_ ## c1,                        \
 		rumi_color_fg_ ## c2,                        \
 		rumi_color_fg_ ## c3,                        \
-		prefix, message, postscript);                \
+		prefix, message);                            \
 	va_end(argptr);
 
 void
-rumi_ok (Rumi rumi, char *message, char *postscript, ...)
+rumi_ok (Rumi rumi, char *message, ...)
 {
 	RUMI_LOG_INTERNAL_CALLER(green, green, yellow, "   OK   ");
 }
