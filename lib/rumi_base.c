@@ -24,6 +24,7 @@ rumi_reset (Rumi rumi)
 
 		rumi->title[0] = '\0';
 		rumi->name[0] = '\0';
+		rumi->suffix[0] = '\0';
 
 		rumi->save_to_disk = false;
 

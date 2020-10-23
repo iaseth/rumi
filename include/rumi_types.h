@@ -26,6 +26,7 @@ struct Rumi_t {
 
 	char title [RUMI_MAX_NAME_LENGTH];
 	char name [RUMI_MAX_NAME_LENGTH];
+	char suffix [RUMI_MAX_NAME_LENGTH];
 
 	bool save_to_disk;
 	char filename [RUMI_MAX_NAME_LENGTH];
