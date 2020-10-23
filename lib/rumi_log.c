@@ -72,9 +72,9 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	}
 
 	if (rumi->show_color) {
-		printf("(%s%s%s) %s.\n",
+		printf("(%s%s%s) %s%s%s.\n",
 			c2, rumi->title, rumi_color_reset,
-			message
+			c3, message, rumi_color_reset
 		);
 	} else {
 		printf("(%s) %s.\n", rumi->title, message);
@@ -97,13 +97,13 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 void
 rumi_ok (Rumi rumi, char *message, ...)
 {
-	RUMI_LOG_INTERNAL_CALLER(green, green, yellow, "   OK   ");
+	RUMI_LOG_INTERNAL_CALLER(green, green, green, "   OK   ");
 }
 
 void
 rumi_error (Rumi rumi, char *message, ...)
 {
-	RUMI_LOG_INTERNAL_CALLER(red, red, yellow, " ERROR! ");
+	RUMI_LOG_INTERNAL_CALLER(red, red, red, " ERROR! ");
 }
 
 void
