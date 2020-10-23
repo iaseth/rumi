@@ -13,7 +13,6 @@
 typedef char *RumiColor;
 
 struct RumiStruct;
-typedef struct RumiStruct RumiStruct;
 typedef struct RumiStruct *Rumi;
 
 
