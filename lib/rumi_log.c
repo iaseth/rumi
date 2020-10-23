@@ -100,6 +100,12 @@ rumi_ok (Rumi rumi, char *message, ...)
 	RUMI_LOG_INTERNAL_CALLER(green, green, yellow, "   OK   ");
 }
 
+void
+rumi_error (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(red, red, yellow, " ERROR  ");
+}
+
 #undef RUMI_LOG_INTERNAL_CALLER
 
 
