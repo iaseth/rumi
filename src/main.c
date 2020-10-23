@@ -18,9 +18,9 @@ rumi_no_macros ()
 
 void rumi_with_macros ()
 {
-	Rumi_new("Rumi 1.0");
+	RUMI_NEW("Rumi 1.0");
 	printf("%s\n", rumi->title);
-	Rumi_delete;
+	RUMI_DELETE();
 }
 
 int
