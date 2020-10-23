@@ -14,6 +14,8 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	static char date_string[12] = "";
 
 	static int tv_sec = 0;
+	static int milliseconds = 0;
+	static int microseconds = 0;
 	static char time_string[12] = "";
 
 	if (rumi->show_color) {
@@ -53,8 +55,8 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 				sprintf(time_string, "%02d:%02d:%02d", time_ptr->tm_hour, time_ptr->tm_min, time_ptr->tm_sec);
 			}
 
-			int milliseconds = ts.tv_nsec / 1000000;
-			int microseconds = (ts.tv_nsec / 1000) % 1000;
+			milliseconds = ts.tv_nsec / 1000000;
+			microseconds = (ts.tv_nsec / 1000) % 1000;
 			if (rumi->show_color) {
 				printf("at %s%s%s %03d.%03d ms ",
 					rumi_color_fg_cyan, time_string, rumi_color_reset,
