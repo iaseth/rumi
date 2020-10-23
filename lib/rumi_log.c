@@ -3,11 +3,10 @@
 #include "rumi_colors.h"
 
 #include <stdio.h>
-#include <stdarg.h>
 #include <time.h>
 
 int
-rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, ...)
+rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, va_list argptr)
 {
 	static struct tm *time_ptr = NULL;
 	static int yday = 0;
@@ -71,13 +70,16 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		}
 	}
 
+	char full_message[200];
+	vsprintf(full_message, message, argptr);
+
 	if (rumi->show_color) {
-		printf("(%s%s%s) %s%s%s.\n",
+		printf("(%s%s%s) %s%s%s\n",
 			c2, rumi->title, rumi_color_reset,
-			c3, message, rumi_color_reset
+			c3, full_message, rumi_color_reset
 		);
 	} else {
-		printf("(%s) %s.\n", rumi->title, message);
+		printf("(%s) %s.\n", rumi->title, full_message);
 	}
 	return 0;
 }
@@ -91,7 +93,7 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 		rumi_color_fg_ ## c1,                        \
 		rumi_color_fg_ ## c2,                        \
 		rumi_color_fg_ ## c3,                        \
-		prefix, message);                            \
+		prefix, message, argptr);                    \
 	va_end(argptr);                                  \
 	return ru;
 

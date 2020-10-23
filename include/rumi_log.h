@@ -1,10 +1,12 @@
 #ifndef RUMI_LOG_H
 #define RUMI_LOG_H
 
+#include <stdarg.h>
+
 #include "rumi_types.h"
 #include "ru.h"
 
-int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, ...);
+int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, va_list argptr);
 
 const struct RumiRuStruct* rumi_ok (Rumi rumi, char *message, ...);
 const struct RumiRuStruct* rumi_error (Rumi rumi, char *message, ...);
