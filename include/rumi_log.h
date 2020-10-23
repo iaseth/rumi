@@ -7,6 +7,13 @@ int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char
 
 void rumi_ok (Rumi rumi, char *message, ...);
 
+#define rumi_error(rumi, ...)                                       \
+	rumi_log_internal(                                              \
+		rumi,                                                       \
+		rumi_color_fg_red, rumi_color_fg_red, rumi_color_fg_green,  \
+		"  ERROR ", __VA_ARGS__                                     \
+	)
+
 
 
 #endif

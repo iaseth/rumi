@@ -10,7 +10,7 @@ rumi_no_macros ()
 		if (i % 2 == 0) {
 			rumi_ok(rumi, "This is an even number");
 		} else {
-			rumi_ok(rumi, "This is odd");
+			rumi_error(rumi, "This is odd");
 		}
 	}
 	rumi = rumi_delete(rumi);
