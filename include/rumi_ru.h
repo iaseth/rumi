@@ -12,6 +12,14 @@ typedef bool (*RumyIndicatorFunction) (Rumi rumi);
 struct RumiRuStruct {
 	RumyLoggerFunction ok;
 	RumyLoggerFunction error;
+
+	RumyLoggerFunction suggest;
+	RumyLoggerFunction tip;
+	RumyLoggerFunction warn;
+
+	RumyLoggerFunction good;
+	RumyLoggerFunction bad;
+	RumyLoggerFunction minate;
 };
 
 extern const struct RumiRuStruct *const ru;
