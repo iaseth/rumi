@@ -3,10 +3,10 @@
 #include <stdio.h>
 
 void
-rumi_no_macros ()
+rumi_with_ru ()
 {
-	Rumi rumi = ru->new("rumi_no_macros");
-	for (int i = 0; i < 100000; ++i) {
+	Rumi rumi = ru->new("Rumi 1.0 (ru)");
+	for (int i = 0; i < 5; ++i) {
 		if (i % 2 == 0) {
 			ru->ok(rumi, "This is an even number");
 		} else {
@@ -18,14 +18,22 @@ rumi_no_macros ()
 
 void rumi_with_macros ()
 {
-	RUMI_NEW("Rumi 1.0");
-	RUMI_OK("Saying OK with macros");
+	RUMI_NEW("Rumi 1.0 (macros)");
+	RUMI_OK("Hello, Macros!");
 	RUMI_DELETE();
+}
+
+void rumi_vanilla ()
+{
+	Rumi rumi = rumi_new("Rumi 1.0 (vanilla)");
+	rumi_ok(rumi, "Hello, Vanilla!");
+	rumi = rumi_delete(rumi);
 }
 
 int
 main (int argc, char const *argv[])
 {
-	//rumi_no_macros();
+	rumi_vanilla();
 	rumi_with_macros();
+	rumi_with_ru();
 }
