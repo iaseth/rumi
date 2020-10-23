@@ -6,7 +6,7 @@
 #include <time.h>
 
 int
-rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message)
+rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, char *postscript)
 {
 	static struct tm *time_ptr = NULL;
 	static int yday = 0;
@@ -15,7 +15,12 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	static int tv_sec = 0;
 	static char time_string[12] = "";
 
-	printf("[%s%s%s] %2d. ", c1, prefix, rumi_color_reset, ++rumi->log_count);
+	if (rumi->show_color) {
+		printf("[%s%s%s] %2d. ", c1, prefix, rumi_color_reset, ++rumi->log_count);
+	} else {
+		printf("[%s] %2d. ", prefix, ++rumi->log_count);
+	}
+
 	if (rumi->show_date || rumi->show_time) {
 		struct timespec ts;
 		timespec_get(&ts, TIME_UTC);
@@ -57,15 +62,19 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 			}
 		}
 	}
-	printf("(%s%s%s) ", c2, rumi->title, rumi_color_reset);
-	printf("Rumi says: %s\n", message);
+
+	if (rumi->show_color) {
+		printf("(%s%s%s) %s\n", c2, rumi->title, rumi_color_reset, message);
+	} else {
+		printf("(%s) %s\n", rumi->title, message);
+	}
 	return 0;
 }
 
 void
-rumi_ok (Rumi rumi, char *message)
+rumi_ok (Rumi rumi, char *message, char *postscript)
 {
-	rumi_log_internal(rumi, rumi_color_fg_green, rumi_color_fg_green, rumi_color_fg_yellow, "   OK   ", message);
+	rumi_log_internal(rumi, rumi_color_fg_green, rumi_color_fg_green, rumi_color_fg_yellow, "   OK   ", message, postscript);
 }
 
 

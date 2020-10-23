@@ -7,7 +7,7 @@ rumi_no_macros ()
 {
 	Rumi rumi = rumi_new("rumi_no_macros");
 	for (int i = 0; i < 20; ++i) {
-		rumi_ok(rumi, "Hello");
+		rumi_ok(rumi, "Hello", "World!");
 	}
 	rumi = rumi_delete(rumi);
 }

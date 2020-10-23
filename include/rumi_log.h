@@ -3,9 +3,9 @@
 
 #include "rumi_types.h"
 
-int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message);
+int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, char *postscript);
 
-void rumi_ok (Rumi rumi, char *message);
+void rumi_ok (Rumi rumi, char *message, char *postscript);
 
 
 
