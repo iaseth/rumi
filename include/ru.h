@@ -10,6 +10,10 @@ typedef const struct RumiRuStruct* (*RumySwitchFunction) (Rumi rumi);
 typedef bool (*RumyIndicatorFunction) (Rumi rumi);
 
 struct RumiRuStruct {
+	Rumi (*new) (char *title);
+	Rumi (*new_child) (Rumi rumi);
+	Rumi (*delete) (Rumi rumi);
+
 	RumyLoggerFunction ok;
 	RumyLoggerFunction error;
 
