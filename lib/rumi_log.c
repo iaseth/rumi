@@ -70,13 +70,24 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	}
 
 	if (rumi->show_color) {
-		printf("(%s%s%s) %s [%s%s%s]\n",
-			c2, rumi->title, rumi_color_reset,
-			message,
-			c3, postscript, rumi_color_reset
-		);
+		if (postscript == NULL) {
+			printf("(%s%s%s) %s.\n",
+				c2, rumi->title, rumi_color_reset,
+				message
+			);
+		} else {
+			printf("(%s%s%s) %s: [%s%s%s]\n",
+				c2, rumi->title, rumi_color_reset,
+				message,
+				c3, postscript, rumi_color_reset
+			);
+		}
 	} else {
-		printf("(%s) %s [%s]\n", rumi->title, message, postscript);
+		if (postscript == NULL) {
+			printf("(%s) %s.\n", rumi->title, message);
+		} else {
+			printf("(%s) %s [%s]\n", rumi->title, message, postscript);
+		}
 	}
 	return 0;
 }

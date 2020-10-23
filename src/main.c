@@ -7,7 +7,11 @@ rumi_no_macros ()
 {
 	Rumi rumi = rumi_new("rumi_no_macros");
 	for (int i = 0; i < 20; ++i) {
-		rumi_ok(rumi, "This is the message", "some postscript");
+		if (i % 2 == 0) {
+			rumi_ok(rumi, "This is an even number", "Good times");
+		} else {
+			rumi_ok(rumi, "This is odd", NULL);
+		}
 	}
 	rumi = rumi_delete(rumi);
 }
