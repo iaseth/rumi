@@ -13,7 +13,7 @@ struct RumiRuStruct {
 	int status_code;
 
 	Rumi (*new) (char *title);
-	Rumi (*new_child) (Rumi rumi);
+	Rumi (*new_child) (Rumi rumi, char *title);
 	Rumi (*delete) (Rumi rumi);
 
 	RumyLoggerFunction ok;

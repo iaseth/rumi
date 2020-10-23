@@ -13,6 +13,23 @@ rumi_new (char *title)
 }
 
 Rumi
+rumi_new_child (Rumi rumi, char *title)
+{
+	Rumi child = rumi_new(title);
+	child->parent = rumi;
+	return child;
+}
+
+Rumi
+rumi_delete (Rumi rumi)
+{
+	if (rumi != NULL) {
+		free(rumi);
+	}
+	return NULL;
+}
+
+Rumi
 rumi_reset (Rumi rumi)
 {
 	if (rumi != NULL) {
@@ -45,21 +62,6 @@ rumi_reset (Rumi rumi)
 		rumi->warning_count = 0;
 	}
 	return rumi;
-}
-
-Rumi
-rumi_new_child (Rumi rumi)
-{
-	return NULL;
-}
-
-Rumi
-rumi_delete (Rumi rumi)
-{
-	if (rumi != NULL) {
-		free(rumi);
-	}
-	return NULL;
 }
 
 
