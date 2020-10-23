@@ -78,14 +78,14 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 
 
 
-#define RUMI_LOG_INTERNAL_CALLER(c1,c2,c3,prefix) \
-	va_list argptr;                               \
-	va_start(argptr, postscript);                 \
-	rumi_log_internal(rumi,                       \
-		rumi_color_fg_ ## c1,                     \
-		rumi_color_fg_ ## c2,                     \
-		rumi_color_fg_ ## c3,                     \
-		prefix, message, postscript);             \
+#define RUMI_LOG_INTERNAL_CALLER(c1, c2, c3, prefix) \
+	va_list argptr;                                  \
+	va_start(argptr, postscript);                    \
+	rumi_log_internal(rumi,                          \
+		rumi_color_fg_ ## c1,                        \
+		rumi_color_fg_ ## c2,                        \
+		rumi_color_fg_ ## c3,                        \
+		prefix, message, postscript);                \
 	va_end(argptr);
 
 void
