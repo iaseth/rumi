@@ -19,12 +19,13 @@ rumi_no_macros ()
 void rumi_with_macros ()
 {
 	RUMI_NEW("Rumi 1.0");
-	printf("%s\n", rumi->title);
+	RUMI_OK("Saying OK with macros");
 	RUMI_DELETE();
 }
 
 int
 main (int argc, char const *argv[])
 {
-	rumi_no_macros();
+	//rumi_no_macros();
+	rumi_with_macros();
 }
