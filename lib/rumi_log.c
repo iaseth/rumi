@@ -103,7 +103,43 @@ rumi_ok (Rumi rumi, char *message, ...)
 void
 rumi_error (Rumi rumi, char *message, ...)
 {
-	RUMI_LOG_INTERNAL_CALLER(red, red, yellow, " ERROR  ");
+	RUMI_LOG_INTERNAL_CALLER(red, red, yellow, " ERROR! ");
+}
+
+void
+rumi_suggest (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(yellow, cyan, yellow, "  SUGG  ");
+}
+
+void
+rumi_tip (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(magenta, cyan, yellow, "  TIP!  ");
+}
+
+void
+rumi_warn (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(cyan, red, yellow, "  WARN  ");
+}
+
+void
+rumi_good (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(green, magenta, yellow, "  GOOD  ");
+}
+
+void
+rumi_bad (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(red, magenta, yellow, "   BAD  ");
+}
+
+void
+rumi_nate (Rumi rumi, char *message, ...)
+{
+	RUMI_LOG_INTERNAL_CALLER(yellow, magenta, yellow, "  NATE  ");
 }
 
 #undef RUMI_LOG_INTERNAL_CALLER

@@ -8,6 +8,15 @@ int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char
 void rumi_ok (Rumi rumi, char *message, ...);
 void rumi_error (Rumi rumi, char *message, ...);
 
+void rumi_suggest (Rumi rumi, char *message, ...);
+void rumi_tip (Rumi rumi, char *message, ...);
+void rumi_warn (Rumi rumi, char *message, ...);
+
+void rumi_good (Rumi rumi, char *message, ...);
+void rumi_bad (Rumi rumi, char *message, ...);
+
+void rumi_nate (Rumi rumi, char *message, ...);
+
 
 
 #endif
