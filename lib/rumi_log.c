@@ -98,30 +98,35 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 const struct RumiRuStruct *
 rumi_ok (Rumi rumi, char *message, ...)
 {
+	rumi->ok_count++;
 	RUMI_LOG_INTERNAL_CALLER(green, green, green, "   OK   ");
 }
 
 const struct RumiRuStruct *
 rumi_error (Rumi rumi, char *message, ...)
 {
+	rumi->error_count++;
 	RUMI_LOG_INTERNAL_CALLER(red, red, red, " ERROR! ");
 }
 
 const struct RumiRuStruct *
 rumi_suggest (Rumi rumi, char *message, ...)
 {
+	rumi->suggestion_count++;
 	RUMI_LOG_INTERNAL_CALLER(yellow, cyan, yellow, "  SUGG  ");
 }
 
 const struct RumiRuStruct *
 rumi_tip (Rumi rumi, char *message, ...)
 {
+	rumi->tip_count++;
 	RUMI_LOG_INTERNAL_CALLER(magenta, cyan, yellow, "  TIP!  ");
 }
 
 const struct RumiRuStruct *
 rumi_warn (Rumi rumi, char *message, ...)
 {
+	rumi->warning_count++;
 	RUMI_LOG_INTERNAL_CALLER(cyan, red, yellow, "  WARN  ");
 }
 

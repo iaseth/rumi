@@ -40,7 +40,13 @@ struct RumiStruct {
 	bool show_instant;
 
 	int max_width;
+
 	int log_count;
+	int ok_count;
+	int error_count;
+	int suggestion_count;
+	int tip_count;
+	int warning_count;
 };
 
 

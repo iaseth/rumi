@@ -38,6 +38,11 @@ rumi_reset (Rumi rumi)
 		rumi->show_instant = true;
 
 		rumi->log_count = 0;
+		rumi->ok_count = 0;
+		rumi->error_count = 0;
+		rumi->suggestion_count = 0;
+		rumi->tip_count = 0;
+		rumi->warning_count = 0;
 	}
 	return rumi;
 }
