@@ -1,5 +1,10 @@
 
 
+Rumi X.X.X | goals
+------------------
+  * Get to `100k logs/second` and try to match the speeds of `printf`.
+  * Implement logging to disk.
+
 
 Rumi 0.1.0 | (23-10-2020)
 -------------------------
