@@ -2,7 +2,7 @@
 #define RUMI_SWITCHES_H
 
 #include "rumi_types.h"
-#include "rumi_ru.h"
+#include "ru.h"
 
 #define RUMI_DECLARE_SWITCHES(x) \
 	const struct RumiRuStruct*  rumi_turn_off_ ## x (Rumi rumi); \

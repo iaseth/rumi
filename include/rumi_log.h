@@ -2,7 +2,7 @@
 #define RUMI_LOG_H
 
 #include "rumi_types.h"
-#include "rumi_ru.h"
+#include "ru.h"
 
 int rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, ...);
 

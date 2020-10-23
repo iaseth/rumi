@@ -1,4 +1,4 @@
-#include "rumi_ru.h"
+#include "ru.h"
 
 #include "rumi_log.h"
 

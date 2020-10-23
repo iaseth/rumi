@@ -17,7 +17,7 @@ RUMI_NAMES += rumi_colors
 RUMI_NAMES += rumi_base
 RUMI_NAMES += rumi_switches
 RUMI_NAMES += rumi_log
-RUMI_NAMES += rumi_ru
+RUMI_NAMES += ru
 
 RUMI_OBJ_NAMES = ${addsuffix .o, ${RUMI_NAMES}}
 RUMI_OBJS = ${addprefix build/, ${RUMI_OBJ_NAMES}}
