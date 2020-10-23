@@ -3,10 +3,11 @@
 #include "rumi_colors.h"
 
 #include <stdio.h>
+#include <stdarg.h>
 #include <time.h>
 
 int
-rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, char *postscript)
+rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *prefix, char *message, char *postscript, ...)
 {
 	static struct tm *time_ptr = NULL;
 	static int yday = 0;
@@ -75,10 +76,20 @@ rumi_log_internal (Rumi rumi, RumiColor c1, RumiColor c2, RumiColor c3, char *pr
 	return 0;
 }
 
+
+
+#define RUMI_LOG_INTERNAL_CALLER(c1,c2,c3,prefix) \
+	va_list argptr; va_start(argptr, postscript); \
+	rumi_log_internal(rumi, c1, c2, c3, prefix, message, postscript); \
+	va_end(argptr);
+
 void
-rumi_ok (Rumi rumi, char *message, char *postscript)
+rumi_ok (Rumi rumi, char *message, char *postscript, ...)
 {
-	rumi_log_internal(rumi, rumi_color_fg_green, rumi_color_fg_green, rumi_color_fg_yellow, "   OK   ", message, postscript);
+	RUMI_LOG_INTERNAL_CALLER(rumi_color_fg_green, rumi_color_fg_green, rumi_color_fg_yellow, "   OK   ");
+	//rumi_log_internal(rumi, rumi_color_fg_green, rumi_color_fg_green, rumi_color_fg_yellow, "   OK   ", message, postscript);
 }
+
+#undef RUMI_LOG_INTERNAL_CALLER
 
 
