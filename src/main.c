@@ -5,15 +5,15 @@
 void
 rumi_no_macros ()
 {
-	Rumi rumi = rumi_new("rumi_no_macros");
-	for (int i = 0; i < 1000000; ++i) {
+	Rumi rumi = ru->new("rumi_no_macros");
+	for (int i = 0; i < 100000; ++i) {
 		if (i % 2 == 0) {
 			ru->ok(rumi, "This is an even number");
 		} else {
 			ru->error(rumi, "This is odd");
 		}
 	}
-	rumi = rumi_delete(rumi);
+	rumi = ru->delete(rumi);
 }
 
 void rumi_with_macros ()
