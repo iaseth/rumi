@@ -65,3 +65,19 @@ rumi_reset (Rumi rumi)
 }
 
 
+
+const struct RumiRuStruct *
+rumi_set_title (Rumi rumi, char *title)
+{
+	strcpy(rumi->title, title);
+	return ru;
+}
+
+const struct RumiRuStruct *
+rumi_set_name (Rumi rumi, char *name)
+{
+	strcpy(rumi->name, name);
+	return ru;
+}
+
+
